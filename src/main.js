@@ -6,11 +6,11 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 
-const service = axios.create({
-  baseURL:"https://localhost:5001/"
-})
+axios.defaults.baseURL = 'https://localhost:5001/'
+axios.defaults.headers.common['Authorzation'] = `bearer ${localStorage.getItem("token")}`
+
 Vue.use(ElementUI)
-Vue.prototype.$http = service
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 new Vue({

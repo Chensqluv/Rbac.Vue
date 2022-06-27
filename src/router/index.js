@@ -6,9 +6,25 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/home',
+    component: () => import( '../views/home.vue'),
+    children:[
+      {
+        path: '/menu',
+        name: 'menu',
+        component: () => import( '../views/menu.vue')
+      },
+      {
+        path: '/addmenu',
+        name: 'addmenu',
+        component: () => import( '../views/addmenu.vue')
+      }
+    ]
+  },
+  {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
   },
   {
     path: '/about',
@@ -29,10 +45,16 @@ const routes = [
     component: () => import( '../views/addmenu.vue')
   },
   {
-    path: '/editmenu',
-    name: 'editmenu',
-    component: () => import( '../views/editmenu.vue')
-  }
+    path: '/role',
+    name: 'role',
+    component: () => import( '../views/Roles/role.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import( '../views/Token/login.vue')
+  },
+  
 ]
 
 const router = new VueRouter({

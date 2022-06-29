@@ -9,7 +9,7 @@
 
     <!--添加弹框-->
     <el-dialog title="添加" :visible.sync="dialogVisible" width="30%">
-      <add @reloadtable="reloadtable" />
+      <add :key="new Date().getTime()" @reloadtable="reloadtable" />
     </el-dialog>
 
     <!--编辑弹框-->
@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import add from "@/views/addmenu.vue";
-import edit from "@/views/editmenu.vue";
+import add from "@/views/Menus/addmenu.vue";
+import edit from "@/views/Menus/editmenu.vue";
 export default {
   components: {
     add,
@@ -91,6 +91,10 @@ export default {
     },
     handleDelete(index, row) {
       let url = "api/Menu/DeleteMenu?id=" + row.menuId;
+      if(row.children.length>0){
+        this.$message.error("该节点有子节点，不能直接删除");
+        return
+      }
       if (confirm("确定要删除么")) {
         this.$http.delete(url).then((res) => {
           if (res.data > 0) {

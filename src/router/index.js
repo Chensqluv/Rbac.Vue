@@ -12,18 +12,19 @@ const routes = [
       {
         path: '/menu',
         name: 'menu',
-        component: () => import( '../views/menu.vue')
+        component: () => import( '../views/Menus/menu.vue')
       },
       {
         path: '/addmenu',
         name: 'addmenu',
-        component: () => import( '../views/addmenu.vue')
+        component: () => import( '../views/Menus/addmenu.vue')
       }
     ]
   },
   {
     path: '/',
     name: 'home',
+    redirect:'login',
     component: HomeView,
   },
   {
@@ -37,12 +38,12 @@ const routes = [
   {
     path: '/menu',
     name: 'menu',
-    component: () => import( '../views/menu.vue')
+    component: () => import( '../views/Menus/menu.vue')
   },
   {
     path: '/addmenu',
     name: 'addmenu',
-    component: () => import( '../views/addmenu.vue')
+    component: () => import( '../views/Menus/addmenu.vue')
   },
   {
     path: '/role',
@@ -54,7 +55,11 @@ const routes = [
     name: 'login',
     component: () => import( '../views/Token/login.vue')
   },
-  
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import( '../views/Token/register.vue')
+  }
 ]
 
 const router = new VueRouter({

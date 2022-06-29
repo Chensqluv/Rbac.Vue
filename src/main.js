@@ -7,8 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'https://localhost:5001/'
-axios.defaults.headers.common['Authorzation'] = `bearer ${localStorage.getItem("token")}`
-
+axios.defaults.headers.common['Authorization'] =`bearer ${localStorage.getItem("token")}`
 Vue.use(ElementUI)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false

@@ -1,11 +1,9 @@
 <template>
-  <div class="c">
+  <div>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>登录界面</span>
-        <el-button style="float: right; padding: 3px 0" type="text" @click="zc"
-          >注册</el-button
-        >
+        <span>注册用户</span>
+        
       </div>
       <el-form
         :model="ruleForm"
@@ -26,7 +24,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')"
-            >登录</el-button
+            >注册</el-button
           >
         </el-form-item>
       </el-form>
@@ -45,24 +43,15 @@ export default {
     };
   },
   methods: {
-    zc(){
-      this.$router.push('/register')
-    },
     submitForm() {
-      let url = "api/Admin/Login";
+      let url = "api/Admin/Register";
       this.$http.post(url, this.ruleForm).then((res) => {
         if (res.data.code == 0) {
-          this.$message.success("登录成功");
-          debugger
-          localStorage.setItem("token",res.data.token)
-          this.$router.push('/home')
+          this.$message.success("注册成功");
+          this.$router.push('/login')
         }
         if (res.data.code == 1) {
-          this.$message.error("没有此用户");
-          return;
-        }
-        if (res.data.code == 2) {
-          this.$message.error("密码错误");
+          this.$message.error("该用户已注册");
           return;
         }
       });
@@ -72,9 +61,6 @@ export default {
 </script>
 
 <style>
-.c{
-  background-color: aquamarine;
-}
 .el-card {
   margin: 0 auto;
   margin-top: 15em;

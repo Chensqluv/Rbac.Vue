@@ -18,6 +18,11 @@ const routes = [
         path: '/addmenu',
         name: 'addmenu',
         component: () => import( '../views/Menus/addmenu.vue')
+      },
+      {
+        path: '/role',
+        name: 'role',
+        component: () => import( '../views/Roles/role.vue')
       }
     ]
   },
